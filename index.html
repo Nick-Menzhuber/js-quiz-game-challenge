@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coding Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    
+  </head>
+
+  <body>
+    <!--add topbar link to scores and the quiz timer-->
+    <nav class="topbar">    
+        <div class="high-scores-link">
+            <a href="assets/html/scores.html">View high scores</a>
+        </div>
+        <div class="timer">Time:<span class="seconds-remaining"></span></div>
+    </nav> 
+    <!--welcome message--> 
+    <section class="welcome-msg">
+        <h1 id="game-heading">Coding Quiz Challenge</h1>
+        <p id="welcome-text">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers
+            will penalize your score/time by ten seconds!
+        </p>
+    </section>
+    <!--creates a space for questions to appear-->
+    <section class="container">
+      <div id="question-container" class="hide">
+        <div id="question">Question</div>
+        <div id="choice-buttons" class="btn-column">
+          <button class="btn">Choice 1</button>
+          <button class="btn">Choice 2</button>
+          <button class="btn">Choice 3</button>
+          <button class="btn">Choice 4</button>
+        </div>
+      </div>
+    </section>
+    <!--creates quiz start button-->
+    <button class="start-button">Start Quiz</button>
+  </body>
+  <!--link to js file-->
+  <script src="./assets/js/script.js"></script>
+
+</html>
