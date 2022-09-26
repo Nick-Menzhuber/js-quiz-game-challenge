@@ -8,6 +8,8 @@ var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answerButtonsElement = document.getElementsByClassName("btn");
 let shuffledQuestions, currentQuestionIndex;
+let secondsRemaining = document.getElementById("#seconds-remaining");
+let startingSeconds = 75
 
 //Define quiz questions
 const questions =
@@ -85,6 +87,7 @@ startButton.addEventListener("click", startGame);
 
 //function fires at start button
 function startGame() {
+    setTimer();
     startButton.remove();
     welcomeText.remove();
     gameHeading.remove();
@@ -92,6 +95,7 @@ function startGame() {
     currentQuestionIndex = 0
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
+    
 }
 
 //function selects the next question
@@ -112,4 +116,9 @@ function showAnswers(question) {
 
 function selectAnswer() {
 
+}
+
+//timer functions
+function setTimer() {
+    secondsRemaining.innerText = startingSeconds;
 }
