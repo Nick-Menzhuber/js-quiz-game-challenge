@@ -127,24 +127,20 @@ function showAnswers(question) {
         btnEl.addEventListener("click", checkAnswer)
         //update dom to show answer buttons
         choiceButtonsEl.appendChild(btnEl);
-
-        //checkAnswer;
+        checkAnswer;
     });
 }
-//sets conditions for correct and incorrect answers
-/*if (correct === true) {
-    setNextQuestion
-} else {
-    seconds - 10;
-    setNextQuestion;
-}*/
 
 //function selectAnswer() {}
 function endGame() {
     console.log("The game is over")
 }
 
-
+function checkAnswer(event) {
+    console.log(event.target.innerText)
+    
+    
+}
 
 //timer functions
 function decrementSeconds() {
