@@ -6,10 +6,14 @@ var welcomeText = document.getElementById("welcome-text");
 var gameHeading = document.getElementById("game-heading");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
-var answerButtonsElement = document.getElementsByClassName("btn");
+var choiceButtonsEl = document.getElementById("choice-buttons");
+//var answerButtonsElement = document.getElementsByClassName("btn");
 let shuffledQuestions, currentQuestionIndex;
-let secondsRemaining = document.getElementById("#seconds-remaining");
-let startingSeconds = 75
+var timer = document.getElementById("timer");
+var seconds = 75;
+var countDown;
+
+
 
 //Define quiz questions
 const questions =
@@ -87,10 +91,10 @@ startButton.addEventListener("click", startGame);
 
 //function fires at start button
 function startGame() {
-    setTimer();
     startButton.remove();
     welcomeText.remove();
     gameHeading.remove();
+    countDown = setInterval(decrementSeconds, 1000);
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove("hide");
@@ -100,25 +104,56 @@ function startGame() {
 
 //function selects the next question
 function setNextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex])
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    showAnswers(shuffledQuestions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
     questionElement.innerText = question.question
-    showAnswers()
+    //showAnswers()
 }
 
 function showAnswers(question) {
-    for (var i = 0; i < answerButtonsElement.length; i++){
-        answerButtonsElement.innerText = question.answers.text
-    }
+    console.log(question)
+    question.answers.forEach(element => {
+        console.log(element.text)
+        let btnEl = document.createElement("button")
+        //put the text of each answer inside button element
+        btnEl.innerText = element.text;
+        console.log(btnEl)
+        //add class to each element so buttons are styled
+        btnEl.classList.add("btn");
+        //add event listener to each button
+        btnEl.addEventListener("click", checkAnswer)
+        //update dom to show answer buttons
+        choiceButtonsEl.appendChild(btnEl);
+
+        //checkAnswer;
+    });
+}
+//sets conditions for correct and incorrect answers
+/*if (correct === true) {
+    setNextQuestion
+} else {
+    seconds - 10;
+    setNextQuestion;
+}*/
+
+//function selectAnswer() {}
+function endGame() {
+    console.log("The game is over")
 }
 
-function selectAnswer() {
 
-}
 
 //timer functions
-function setTimer() {
-    secondsRemaining.innerText = startingSeconds;
+function decrementSeconds() {
+    if (seconds < 1) {
+        clearInterval(countDown)
+        endGame()
+    }
+    seconds -= 1;
+    timer.innerText = "  " + seconds;
+
 }
+
