@@ -120,6 +120,11 @@ function showAnswers(question) {
         let btnEl = document.createElement("button")
         //put the text of each answer inside button element
         btnEl.innerText = element.text;
+        if (element.correct) {
+            btnEl.classList.add("right-answer")
+       
+        }
+        
         console.log(btnEl)
         //add class to each element so buttons are styled
         btnEl.classList.add("btn");
@@ -138,6 +143,7 @@ function endGame() {
 
 function checkAnswer(event) {
     console.log(event.target.innerText)
+    console.log(event.target.classList.contains("right-answer"))
     
     
 }
